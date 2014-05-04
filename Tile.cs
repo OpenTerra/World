@@ -8,10 +8,8 @@ namespace OpenTerra.World
     /// <summary>
     /// Represents the abstract base for a Tile, including default implementations.
     /// </summary>
-    public abstract class Tile
+    public abstract partial class Tile
     {
-        public Location Location { get; set; }
-
         /// <summary>
         /// Gets called when the Tile is saved.
         /// Has to be overridden if the Tile wants to persist any data. Maximum length is 255 bytes.
@@ -33,9 +31,8 @@ namespace OpenTerra.World
         {
         }
 
-        public Tile(Location location, byte[] data)
+        public Tile(byte[] data)
         {
-            Location = location;
             load(data);
         }
     }

@@ -9,7 +9,7 @@ namespace OpenTerra.World
     /// Represents a Row of Chunks containing Tiles of generic Type.
     /// </summary>
     /// <typeparam name="TileType">The Type of Tiles contained in this ChunkRow. Must derive from <see cref="OpenTerra.World.Tile"/>.</typeparam>
-    public sealed class ChunkRow<TileType> where TileType : Tile, new()
+    public sealed class ChunkRow<TileType> where TileType : Tile
     {
         /// <summary>
         /// The location of the ChunkRow in the stack of Rows making up a Layer. Zero based, from bottom to top.

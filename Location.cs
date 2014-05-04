@@ -26,19 +26,28 @@ namespace OpenTerra.World
         /// <param name="x">X coordinate of the location. Zero based number of tiles from the left end of the map.</param>
         /// <param name="y">Y coordinate of the location. Zero based number of tiles from the bottom of the map.</param>
         public Location(ushort x, ushort y)
+            : this()
         {
             X = x;
             Y = y;
         }
 
-        public static Location GetChunkLocation(Location absoluteTileLocation)
+        /// <summary>
+        /// Takes the current Location as absolute Location for a Tile and returns the Location for the Chunk it's in.
+        /// </summary>
+        /// <returns>Location for the Chunk the Tile is in.</returns>
+        public Location ToChunkLocation()
         {
-            return new Location((ushort)(absoluteTileLocation.X - (absoluteTileLocation.X % Chunk.Width)), (ushort)(absoluteTileLocation.Y - (absoluteTileLocation.Y % Chunk.Height)))
+            return new Location((ushort)((X - (X % Chunk.Width)) / Chunk.Width), (ushort)((Y - (Y % Chunk.Height)) / Chunk.Height));
         }
 
-        public static Location GetTileLocationInChunk(Location absoluteTileLocation)
+        /// <summary>
+        /// Takes the current Location as an absolute Location for a Tile and returns its Location relative to its Chunk.
+        /// </summary>
+        /// <returns>Location relative to the Tile's Chunk.</returns>
+        public Location ToTileLocationInChunk()
         {
-            return new Location((ushort)(absoluteTileLocation.X & Chunk.Width), (ushort)(absoluteTileLocation.Y % Chunk.Height));
+            return new Location((ushort)(X % Chunk.Width), (ushort)(Y % Chunk.Height));
         }
     }
 }

@@ -9,7 +9,7 @@ namespace OpenTerra.World
     /// Represents a chunk containing Tiles of generic Type.
     /// </summary>
     /// <typeparam name="TileType">The Type of Tiles contained in this chunk. Must derive from <see cref="OpenTerra.World.Tile"/>.</typeparam>
-    public sealed class Chunk<TileType> where TileType : Tile, new()
+    public sealed class Chunk<TileType> where TileType : Tile
     {
         /// <summary>
         /// The Location of the Chunk, based on the number of chunks.
